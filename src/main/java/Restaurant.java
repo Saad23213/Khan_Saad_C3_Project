@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Restaurant {
@@ -85,6 +86,20 @@ public class Restaurant {
 
     public String getName() {
         return name;
+    }
+
+    List<String> selectedItem = new ArrayList<String>();
+    public void addToSelectedItems(String name) {
+        selectedItem.add(getName());
+    }
+
+    public int getTotalCost(List<String> selectedItems) {
+        int totalCost = 0;
+        for (String itemName : selectedItems) {
+            totalCost = totalCost + findItemByName(itemName).getPrice();
+
+        }
+        return totalCost;
     }
 
 }

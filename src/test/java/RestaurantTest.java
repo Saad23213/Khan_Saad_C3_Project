@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import java.time.LocalTime;
 
@@ -72,6 +75,10 @@ class RestaurantTest {
     public void selected_items_from_menu_should_return_total_order_cost() throws itemNotFoundException {
         restTest();
         int totalCost=0;
+        restaurant.addToMenu("French Fries", 131);
+        restaurant.selectedItem.add("French Fries");
+        restaurant.selectedItem.add("Vegetable lasagne");
+        totalCost = restaurant.getTotalCost(restaurant.selectedItem);
         assertEquals(400, totalCost);
     }
 }
