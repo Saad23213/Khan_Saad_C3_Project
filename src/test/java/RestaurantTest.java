@@ -59,4 +59,13 @@ class RestaurantTest {
                 () -> restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void selected_items_from_menu_should_return_total_order_cost()  {
+        int totalCost;
+        restaurant.addToMenu("French Fries", 131);
+        restaurant.selectedItem.add("French Fries");
+        restaurant.selectedItem.add("Vegetable lasagne");
+        totalCost = restaurant.getTotalCost(restaurant.selectedItem);
+        assertEquals(400, totalCost);
+    }
 }
