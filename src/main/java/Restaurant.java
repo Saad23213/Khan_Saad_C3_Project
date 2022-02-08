@@ -1,7 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Restaurant {
@@ -9,7 +8,7 @@ public class Restaurant {
     private String location;
     public LocalTime openingTime;
     public LocalTime closingTime;
-    private List<Item> menu = new ArrayList<Item>();
+    private List<Item> menu = new ArrayList<>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
@@ -42,11 +41,7 @@ public class Restaurant {
         LocalTime time = LocalTime.now();
         int RestaurantCloses = time.compareTo(closingTime);
         int RestaurantOpens = time.compareTo(openingTime);
-        if (RestaurantCloses < 0 && RestaurantOpens >= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return RestaurantCloses < 0 && RestaurantOpens >= 0;
         //DELETE ABOVE STATEMENT AND WRITE CODE HERE
     }
 
@@ -86,20 +81,6 @@ public class Restaurant {
 
     public String getName() {
         return name;
-    }
-
-    List<String> selectedItem = new ArrayList<String>();
-    public void addToSelectedItems(String name) {
-        selectedItem.add(getName());
-    }
-
-    public int getTotalCost(List<String> selectedItems) {
-        int totalCost = 0;
-        for (String itemName : selectedItems) {
-            totalCost = totalCost + findItemByName(itemName).getPrice();
-
-        }
-        return totalCost;
     }
 
 }
